@@ -16,7 +16,7 @@
             <div class="col-md-5 px-3">
                 <div class="card-block px-3">
                     <h6 class="card-title" >{{orderItem.product.name}}</h6>
-                    <p id="item-price" class="mb-0 font-weight-bold">${{orderItem.product.price}} per unit</p>
+                    <p id="item-price" class="mb-0 font-weight-bold">₹{{orderItem.product.price}} per unit</p>
                     <p id="item-quantity" class="mb-0">Quantity : {{orderItem.quantity}}</p>
                     <p id="item-total-price" class="mb-0">
                         Total Price : ₹<span class="font-weight-bold">{{ orderItem.price * orderItem.quantity}}</span>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="total-cost pt-2 text-right">
-            <h5>Total Cost : $ {{order.totalPrice}}</h5>
+            <h5>Total Cost : ₹ {{order.totalPrice}}</h5>
         </div>
     </div>
 
