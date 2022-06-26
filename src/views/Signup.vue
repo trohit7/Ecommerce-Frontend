@@ -112,9 +112,11 @@ export default {
           password: this.password,
         };
 
+        console.log('user',user);
+
         // call the API
         await axios
-          .post(`${this.baseURL}user/signup`, user)
+          .post(`${this.baseURL}user/signUp`, user)
           .then(() => {
             // redirect to home page
             this.$router.replace("/");
@@ -123,9 +125,9 @@ export default {
               icon: "success",
               closeOnClickOutside: false,
             });
-          })
+          }) 
           .catch((err) => {
-            console.log(err);
+            console.log("err",err);
           });
       } else {
         // passwords are not matching
