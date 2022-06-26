@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       //baseURL: 'https://limitless-lake-55070.herokuapp.com/',
-      baseURL: "http://localhost:8085/",
+      baseURL: process.env.VUE_APP_API_URL,
       products: [],
       categories: [],
       key: 0,
