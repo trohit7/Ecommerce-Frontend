@@ -9,9 +9,10 @@
     <div class="row">
       <div v-for="product of products" :key="product.id" 
       class="col-md-6 col-xl-4 col-12 pt-3  justify-content-around d-flex">
-        <ProductBox :product="product">
+        <ProductBox :product="product" >
         </ProductBox>
       </div>
+      
     </div>
   </div>
 </template>
@@ -32,7 +33,7 @@ export default {
     fetchWishlist() {
 
       // fetch products
-      axios.get(`${this.baseURL}wishlist/${this.token}`)
+      axios.get(`${this.baseURL}wishList/${this.token}`)
         .then(data => this.products = data.data)
         .catch(err => console.log(err));
     }

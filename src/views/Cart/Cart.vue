@@ -33,7 +33,7 @@
             </router-link>
           </h6>
           <p id="item-price" class="mb-0 font-weight-bold">
-            $ {{ cartItem.product.price }} per unit
+            ₹ {{ cartItem.product.price }} per unit
           </p>
           <p id="item-quantity" class="mb-0">
             Quantity :
@@ -46,7 +46,7 @@
           <p id="item-total-price" class="mb-0">
             Total Price:
             <span class="font-weight-bold">
-              $ {{ cartItem.product.price * cartItem.quantity }}</span
+              ₹ {{ cartItem.product.price * cartItem.quantity }}</span
             >
           </p>
           <br /><a href="#" class="text-right" @click="deleteItem(cartItem.id)"
@@ -60,7 +60,7 @@
 
     <!-- display total price -->
     <div class="total-cost pt-2 text-right">
-      <h5>Total : $ {{ totalcost.toFixed(2) }}</h5>
+      <h5>Total : ₹ {{ totalcost.toFixed(2) }}</h5>
       <button
         :disabled="isDisabled()"
         type="button"

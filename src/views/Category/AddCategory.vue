@@ -51,6 +51,7 @@ export default {
       await axios({
         method: 'post',
         url: this.baseURL+"category/create",
+      //  .post(`${this.baseURL}user/signUp`, user)
         data : JSON.stringify(newCategory),
         headers: {
           'Content-Type': 'application/json'

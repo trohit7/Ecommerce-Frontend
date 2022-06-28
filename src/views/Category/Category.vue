@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import CategoryBox from '../../components/Category/CategoryBox';
+import CategoryBox from '../../components/Category/CategoryBox.vue';
 export default {
   name: 'Category',
   components : {CategoryBox},

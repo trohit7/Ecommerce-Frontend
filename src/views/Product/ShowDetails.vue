@@ -8,7 +8,7 @@
       <div class="col-md-6 col-12 pt-3 pt-md-0">
         <h4>{{ product.name }}</h4>
         <h6 class="category font-italic">{{ category.categoryName }}</h6>
-        <h6 class="font-weight-bold">$ {{ product.price }}</h6>
+        <h6 class="font-weight-bold">₹{{ product.price }}</h6>
         <p>
           {{ product.description }}
         </p>
@@ -18,7 +18,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Quantity</span>
             </div>
-            <input class="form-control" type="number" v-bind:value="quantity" />
+            <input class="form-control" type="number" v-model="quantity" />
           </div>
 
           <div class="input-group col-md-3 col-4 p-0">
@@ -32,7 +32,7 @@
               <ion-icon name="cart-outline" v-pre></ion-icon>
             </button>
           </div>
-        </div>
+        </div>  
 
         <div class="features pt-3">
           <h5><strong>Features</strong></h5>
@@ -47,8 +47,7 @@
           id="wishlist-button"
           class="btn mr-3 p-1 py-0"
           :class="{ product_added_wishlist: isAddedToWishlist }"
-          @click="addToWishList(this.id)"
-        >
+          @click="addToWishList(this.id)">
           {{ wishlistString }}
         </button>
         <button
@@ -68,6 +67,8 @@
 </template>
 
 <script>
+import swal from 'sweetalert';
+
 export default {
   data() {
     return {
@@ -83,30 +84,45 @@ export default {
   props: ["baseURL", "products", "categories"],
   methods: {
     addToWishList(productId) {
+      if (!this.token) {
+        // user is not logged in
+        // show some error
+        swal({
+          text: "please login to add item in wishlist",
+          icon: "error",
+        });
+        return;
+      }
+
+
       axios
-        .post(`${this.baseURL}wishlist/add?token=${this.token}`, {
+        .post(`${this.baseURL}wishList/add?token=${this.token}`, {
           id: productId,
         })
         .then(
           (response) => {
             if (response.status == 201) {
-              this.isAddedToWishlist = true;
+              
               this.wishlistString = "Added to WishList";
-            }
-          },
-          (error) => {
-            console.log(error);
+              swal({
+                text:"Added to wishlist",
+                icon:"success",
+             });
           }
-        );
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
     },
     addToCart(productId) {
-      if (!this.token) {
+       if (!this.token) {
         swal({
           text: "Please log in first!",
           icon: "error",
         });
         return;
       }
+      // add to cart
       axios
         .post(`${this.baseURL}cart/add?token=${this.token}`, {
           productId: productId,
@@ -114,7 +130,7 @@ export default {
         })
         .then(
           (response) => {
-            if (response.status == 201) {
+            if (response.status == 200) {
               swal({
                 text: "Product Added to the cart!",
                 icon: "success",

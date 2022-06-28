@@ -18,7 +18,7 @@ COPY . .
 # build app for production with minification
 RUN npm run build
 
-ENV  VUE_APP_APIURL=http://localhost:8085/
+# ENV  VUE_APP_APIURL=http://localhost:8085/
 
 EXPOSE 8080
 CMD [ "http-server", "dist" ]
