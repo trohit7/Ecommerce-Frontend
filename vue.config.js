@@ -3,6 +3,6 @@ module.exports = {
     // options...
     devServer: {
         disableHostCheck: true,
-        historyApiFallback:true
+        
     }
 }
