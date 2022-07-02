@@ -156,9 +156,12 @@ const routes = [
   }
 ]
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+
+const router = () => new Router({
+  mode: 'history', 
+  base: '/',
+  scrollBehavior: () => ({ y: 0 }),
+  routes: routes
 })
 
 //scroll to top after every route change
