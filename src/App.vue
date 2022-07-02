@@ -24,8 +24,8 @@ export default {
   data() {
     return {
       
-      //baseURL: "http://159.89.171.94:8085/",
-      baseURL: "http://localhost:8085/",
+      baseURL: "http://159.89.171.94:8085/",
+      // baseURL: "http://localhost:8085/",
       products: [],
       categories: [],
       key: 0,
