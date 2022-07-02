@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, RouterLink } from 'vue-router'
 import Home from '../views/Home.vue'
 
 import Admin from '../views/Admin/Admin.vue'
@@ -160,6 +160,10 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router : get('/{any}',function(){
+  return view('welcome');
+})-where("any",".*");
 
 //scroll to top after every route change
 router.beforeEach((to, from, next) => {
