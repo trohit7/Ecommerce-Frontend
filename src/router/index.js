@@ -161,9 +161,6 @@ const router = createRouter({
   routes
 })
 
-router : get('/{any}',function(){
-  return view('welcome');
-})-where("any",".*");
 
 //scroll to top after every route change
 router.beforeEach((to, from, next) => {
