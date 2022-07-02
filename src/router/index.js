@@ -165,9 +165,9 @@ const router = () => new Router({
 })
 
 //scroll to top after every route change
-router.beforeEach((to, from, next) => {
-  window.scrollTo(0, 0);
-  next();
-});
+// router.beforeEach((to, from, next) => {
+//   window.scrollTo(0, 0);
+//   next();
+// });
 
 export default router
