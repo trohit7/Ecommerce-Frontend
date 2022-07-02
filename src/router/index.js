@@ -156,18 +156,15 @@ const routes = [
   }
 ]
 
-
-const router = () => new Router({
-  mode: 'history', 
-  base: '/',
-  scrollBehavior: () => ({ y: 0 }),
-  routes: routes
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
 })
 
 //scroll to top after every route change
-// router.beforeEach((to, from, next) => {
-//   window.scrollTo(0, 0);
-//   next();
-// });
+router.beforeEach((to, from, next) => {
+  window.scrollTo(0, 0);
+  next();
+});
 
 export default router
